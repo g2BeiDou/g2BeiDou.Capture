@@ -14,10 +14,11 @@ if(MSVC)
     )
 endif()
 
+
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/../lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/../lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/../bin)
-message(STATUS "CMAKE_ARCHIVE_OUTPUT_DIRECTORY: ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}")
+
 
 set(cmake_env__src_dir "${CMAKE_CURRENT_SOURCE_DIR}/src")
 set(cmake_env__include_dir "${CMAKE_CURRENT_SOURCE_DIR}/include")
@@ -52,7 +53,6 @@ target_sources(g2BeiDou.Capture
         ${cmake_env__src_dir}/window/DirectShowCapture.cpp
         ${cmake_env__src_dir}/video/VideoCapture.h
         ${cmake_env__src_dir}/video/VideoCapture.cpp
-
 
         PUBLIC
         ${cmake_env__include_dir}/g2BeiDou.Capture.hpp

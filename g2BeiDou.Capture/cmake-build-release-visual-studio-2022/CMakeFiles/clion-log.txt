@@ -1,8 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -G "Visual Studio 17 2022" C:\Users\GengG\CLionProjects\g2BeiDou.Capture\g2BeiDou.Capture
--- Selecting Windows SDK version 10.0.22000.0 to target Windows 10.0.19045.
--- Configuring for MSVC
--- OpenCV_INCLUDE_DIRS: C:/Users/GengG/CLionProjects/g2BeiDou.Capture/3rdpart/opencv/include
--- OpenCV_LIBS: opencv_core
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/GengG/CLionProjects/g2BeiDou.Capture/g2BeiDou.Capture/cmake-build-release-visual-studio-2022
