@@ -2,8 +2,9 @@
 /3rdpart/
 /bin/
 /lib/
-
 /cmake-build-debug/
 /cmake-build-release-visual-studio-2022/
+/g2BeiDou.Capture/cmake-build-debug/
+/g2BeiDou.Capture/cmake-build-release-visual-studio-2022/
 /g2BeiDou.Capture.Test/cmake-build-debug/
 /g2BeiDou.Capture.Test/cmake-build-release-visual-studio-2022/
