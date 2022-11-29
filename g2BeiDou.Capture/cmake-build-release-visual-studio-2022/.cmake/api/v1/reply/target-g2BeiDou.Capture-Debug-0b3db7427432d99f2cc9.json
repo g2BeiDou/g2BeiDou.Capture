@@ -1,0 +1,263 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "C:/Users/GengG/CLionProjects/g2BeiDou.Capture/bin/Debug/g2BeiDou.Capture.dll"
+		},
+		{
+			"path" : "C:/Users/GengG/CLionProjects/g2BeiDou.Capture/lib/Debug/g2BeiDou.Capture.lib"
+		},
+		{
+			"path" : "C:/Users/GengG/CLionProjects/g2BeiDou.Capture/bin/Debug/g2BeiDou.Capture.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"add_compile_options",
+			"target_include_directories",
+			"target_sources"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 24,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 42,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 10,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 28,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 38,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 45,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "/MTd"
+				},
+				{
+					"fragment" : "-std:c++17"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"define" : "g2BeiDou_Capture_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/GengG/CLionProjects/g2BeiDou.Capture/g2BeiDou.Capture/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/GengG/CLionProjects/g2BeiDou.Capture/g2BeiDou.Capture/src"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "C:/Users/GengG/CLionProjects/g2BeiDou.Capture/3rdpart/opencv/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					2
+				],
+				"standard" : "17"
+			},
+			"sourceIndexes" : 
+			[
+				1,
+				3,
+				5,
+				7,
+				9
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "g2BeiDou.Capture::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/machine:x64 /debug /INCREMENTAL",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "C:\\Users\\GengG\\CLionProjects\\g2BeiDou.Capture\\3rdpart\\opencv\\x64\\vc17\\staticlib\\opencv_core460d.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\GengG\\CLionProjects\\g2BeiDou.Capture\\3rdpart\\opencv\\x64\\vc17\\staticlib\\ippiwd.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\GengG\\CLionProjects\\g2BeiDou.Capture\\3rdpart\\opencv\\x64\\vc17\\staticlib\\ippicvmt.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\GengG\\CLionProjects\\g2BeiDou.Capture\\3rdpart\\opencv\\x64\\vc17\\staticlib\\zlibd.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Users\\GengG\\CLionProjects\\g2BeiDou.Capture\\3rdpart\\opencv\\x64\\vc17\\staticlib\\ittnotifyd.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "g2BeiDou.Capture",
+	"nameOnDisk" : "g2BeiDou.Capture.dll",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				0,
+				2,
+				4,
+				6,
+				8
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1,
+				3,
+				5,
+				7,
+				9
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "include/g2BeiDou.Capture.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/g2BeiDou.Capture.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"path" : "src/Capture.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/Capture.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"path" : "src/window/WindowHandleCapture.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/window/WindowHandleCapture.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"path" : "src/window/DirectShowCapture.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/window/DirectShowCapture.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"path" : "src/video/VideoCapture.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/video/VideoCapture.cpp",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

@@ -1,0 +1,12 @@
+# ninja log v5
+50	2400	6914193981068058	CMakeFiles/g2BeiDou.Capture.dir/src/video/VideoCapture.cpp.obj	fd5bc598d32eff2b
+1	1092	6914023278077846	CMakeFiles/Capture.dir/Capture.cpp.obj	1452d64329c63b10
+24	2237	6914193979409537	CMakeFiles/g2BeiDou.Capture.dir/src/Capture.cpp.obj	aac92431d2bb1d05
+10	1980	6914170377704968	CMakeFiles/Capture.dir/src/Capture.cpp.obj	eecb35fecf82beb8
+2	3072	6914170388598405	CMakeFiles/Capture.dir/src/g2BeiDou.Capture.cpp.obj	e1b3cb642ad0addd
+40	2075	6914170378680684	CMakeFiles/Capture.dir/src/video/VideoCapture.cpp.obj	a638a0b9c5c1c91c
+20	2904	6914170386910979	CMakeFiles/Capture.dir/src/window/WindowHandleCapture.cpp.obj	663115090308fa91
+30	2913	6914170387011270	CMakeFiles/Capture.dir/src/window/DirectShowCapture.cpp.obj	2b47d9b8e22ac992
+37	3068	6914193987785526	CMakeFiles/g2BeiDou.Capture.dir/src/window/DirectShowCapture.cpp.obj	cbdb1cf4a3602067
+13	3103	6914193988115608	CMakeFiles/g2BeiDou.Capture.dir/src/window/WindowHandleCapture.cpp.obj	b6e88d4ab2913eda
+1	3201	6914193989095614	CMakeFiles/g2BeiDou.Capture.dir/src/g2BeiDou.Capture.cpp.obj	d0fd6d12beb82e57

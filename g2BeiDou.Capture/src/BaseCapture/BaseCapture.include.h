@@ -1,0 +1,8 @@
+//
+// Created by GengG on 2022/11/29.
+//
+
+#ifndef G2BEIDOU_CAPTURE_BASECAPTURE_INCLUDE_H
+#define G2BEIDOU_CAPTURE_BASECAPTURE_INCLUDE_H
+#include <opencv2/opencv.hpp>
+#endif //G2BEIDOU_CAPTURE_BASECAPTURE_INCLUDE_H

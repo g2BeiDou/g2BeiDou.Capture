@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\GengG\CLionProjects\g2BeiDou.Capture\g2BeiDou.Capture\cmake-build-release-visual-studio-2022\CMakeFiles\36053168fae5c466dabe3765e8ff2b10\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{9BF2220E-D05F-3D31-BC89-4C5C002F2DE7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
