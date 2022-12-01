@@ -152,27 +152,30 @@ TEST_CASE("Capture.Test CPP_API Get 1", "[DirectShow]") {
         REQUIRE(true);
     
         g2::CaptureOptions options;
-        options.window_handle = (long long int) GetDesktopWindow();
+        // 原神 1920x1080
+        options.direct_handle = (long long int)GetDesktopWindow();
+        //std::cout << "handle:" << options.direct_handle << std::endl;
         manager.set(options);
         
-        for (int i=0;i<10;i++)        cv::Mat image = manager.get();
+        for (int i=0;i<10;i++)
+        {cv::Mat image = manager.get();
+            Sleep(200);
+        }
     
         cv::Mat image = manager.get();
-        auto err=  manager.get_last_error();
-        std::cout << "err:" << err.message << std::endl;
         
         
         //REQUIRE(err == g2::CaptureError::NoError);
-        /*
+        
         //REQUIRE(image.empty() == false);
         REQUIRE(image.cols > 0);
         REQUIRE(image.rows > 0);
         //std::cout << "width:" << width << " height:" << height << std::endl;
         // get desktop window size
         RECT desktop;
-        const HWND hDesktop = GetDesktopWindow();
-        GetWindowRect(hDesktop, &desktop);
-        REQUIRE(image.cols == desktop.right);
-        REQUIRE(image.rows == desktop.bottom);
-         */
+        const HWND hDesktop =  (HWND)options.direct_handle;
+    GetWindowRect(hDesktop, &desktop);
+        REQUIRE(image.cols == desktop.right - desktop.left);
+        REQUIRE(image.rows == desktop.bottom - desktop.top);
+        
 }

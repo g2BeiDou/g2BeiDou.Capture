@@ -137,7 +137,8 @@ namespace g2
 #ifdef DEF_Enable_DirectShowCapture
         DirectShowCapture* direct_show_capture = dynamic_cast<DirectShowCapture*>(capture);
         if (direct_show_capture != nullptr) {
-            direct_show_capture->reinitialize((HWND)options.direct_handle);
+            HWND handle = (HWND)options.direct_handle;
+            direct_show_capture->reinitialize(handle);
         }
         else
         {
@@ -214,30 +215,14 @@ namespace g2
     }
 #ifdef __cplusplus
     CaptureManager::CaptureManager(CaptureType mode):mode(mode) {
-        try{
-            capture = CreateCapture(this->mode);
-        }
-        catch (CaptureException &e){
-            throw e;
-        }
-        catch (std::exception &e){
-            throw CaptureException(0, e.what(), __FUNCTION__, __FILE__, __LINE__);
-        }
-        catch (...){
-            throw CaptureException(0, "Unknown Error", __FUNCTION__, __FILE__, __LINE__);
-        }
+        capture = CreateCapture(this->mode);
+        set(this->options);
+        capture->initialize();
     }
     CaptureManager::CaptureManager(CaptureType mode, const CaptureOptions &options):mode(mode),options(options) {
         capture = CreateCapture(this->mode);
         set(this->options);
-        if (capture->initialize())
-        {
-        
-        }
-        else
-        {
-            throw CaptureException(0, "Capture initialize failed", __FUNCTION__, __FILE__, __LINE__);
-        }
+        capture->initialize();
     }
     
     CaptureManager::~CaptureManager() {
