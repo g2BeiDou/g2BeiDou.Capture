@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 if(MSVC)
-    message(STATUS "Configuring for MSVC")
+    # message(STATUS "Configuring for MSVC")
     add_compile_options(
             $<$<CONFIG:>:/MT> #---------|
             $<$<CONFIG:Debug>:/MTd> #---|-- Statically link the runtime libraries
@@ -46,13 +46,14 @@ target_sources(g2BeiDou.Capture
         PRIVATE
         ${cmake_env__src_dir}/g2BeiDou.Capture.cpp
         ${cmake_env__src_dir}/Capture.h
-        ${cmake_env__src_dir}/Capture.cpp
         ${cmake_env__src_dir}/window/WindowHandleCapture.h
         ${cmake_env__src_dir}/window/WindowHandleCapture.cpp
         ${cmake_env__src_dir}/window/DirectShowCapture.h
         ${cmake_env__src_dir}/window/DirectShowCapture.cpp
         ${cmake_env__src_dir}/video/VideoCapture.h
         ${cmake_env__src_dir}/video/VideoCapture.cpp
+        ${cmake_env__src_dir}/logger/grror.h
+        ${cmake_env__src_dir}/logger/grror.cpp
 
         PUBLIC
         ${cmake_env__include_dir}/g2BeiDou.Capture.hpp

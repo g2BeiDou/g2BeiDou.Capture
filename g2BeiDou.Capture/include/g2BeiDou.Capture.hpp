@@ -22,7 +22,7 @@
 #define DEF_Enable_VideoCapture3
 #endif
 
-#ifndef __cplusplus
+#ifndef Def_Build_CPP_INTERFACE
 namespace cv
 {
     class Mat;
@@ -34,7 +34,13 @@ namespace cv
 // This class is exported from the g2BeiDou.Capture.dll
 namespace g2
 {
+    struct err{
+        int code;
+        const char* message;
+        const char* name;
+    };
     
+    class CaptureException;
     enum CaptureType
     {
         WindowHandle,
@@ -83,7 +89,7 @@ namespace g2
         G2API void ReleaseImage(cv::Mat *&image);
     };
 
-#ifdef __cplusplus
+#ifdef Def_Build_CPP_INTERFACE
     class G2API CaptureManager
     {
         Capture* capture = nullptr;
@@ -99,11 +105,13 @@ namespace g2
         void set(const CaptureOptions &options);
         
         cv::Mat get();
+        
+        err get_last_error();
     };
 #endif
 }
 //#define DEF_Enable_WindowHandleCapture
-//#define DEF_Enable_DirectShowCapture
+#define DEF_Enable_DirectShowCapture
 //#define DEF_Enable_VideoCapture
 //#define DEF_Enable_VideoCapture2
 //#define DEF_Enable_VideoCapture3

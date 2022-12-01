@@ -40,6 +40,7 @@ namespace g2
         std::string file; ///< source file name where the error has occurred
         int line; ///< line number in the source file where the error has occurred
     };
+    
     std::vector<CaptureType> GetAvailableCaptureTypes()
     {
         std::vector<CaptureType> capture_types;
@@ -68,7 +69,6 @@ namespace g2
         throw CaptureException(0, "Don't Create WindowHandleCapture ,it's not enabled", __FUNCTION__, __FILE__, __LINE__);
 #endif
     }
-    
     Capture* CreateDirectShow() {
 #ifdef DEF_Enable_DirectShowCapture
         return new DirectShowCapture();
@@ -76,7 +76,6 @@ namespace g2
         throw CaptureException(0, "Don't Create DirectShowCapture ,it's not enabled", __FUNCTION__, __FILE__, __LINE__);
 #endif
     }
-    
     Capture* CreateVideo() {
 #ifdef DEF_Enable_VideoCapture
         return new VideoCapture();
@@ -84,7 +83,6 @@ namespace g2
         throw CaptureException(0, "Don't Create VideoCapture ,it's not enabled", __FUNCTION__, __FILE__, __LINE__);
 #endif
     }
-    
     Capture* CreateVideo2() {
 #ifdef DEF_Enable_VideoCapture2
         return new VideoCapture2();
@@ -92,7 +90,6 @@ namespace g2
         throw CaptureException(0, "Don't Create VideoCapture2 ,it's not enabled", __FUNCTION__, __FILE__, __LINE__);
 #endif
     }
-    
     Capture* CreateVideo3() {
 #ifdef DEF_Enable_VideoCapture3
         return new VideoCapture3();
@@ -117,13 +114,12 @@ namespace g2
                 return nullptr;
         }
     }
-    
     void DestroyCapture(Capture *&capture) {
         delete capture;
         capture = nullptr;
     }
     
-    void SetWindowHandle(Capture* capture, CaptureOptions& options){
+    void SetWindowHandle(Capture* capture,const CaptureOptions& options){
 #ifdef DEF_Enable_WindowHandleCapture
         WindowHandleCapture* window_handle_capture = dynamic_cast<WindowHandleCapture*>(capture);
         if (window_handle_capture != nullptr) {
@@ -137,7 +133,7 @@ namespace g2
         throw CaptureException(0, "WindowHandleCapture is not enabled", __FUNCTION__, __FILE__, __LINE__);
 #endif
     }
-    void SetDirectHandle(Capture* capture, CaptureOptions& options){
+    void SetDirectHandle(Capture* capture,const CaptureOptions& options){
 #ifdef DEF_Enable_DirectShowCapture
         DirectShowCapture* direct_show_capture = dynamic_cast<DirectShowCapture*>(capture);
         if (direct_show_capture != nullptr) {
@@ -151,7 +147,7 @@ namespace g2
         throw CaptureException(0, "DirectShowCapture is not enabled", __FUNCTION__, __FILE__, __LINE__);
 #endif
     }
-    void SetVideoPath(Capture* capture, CaptureOptions& options){
+    void SetVideoPath(Capture* capture,const CaptureOptions& options){
 #ifdef DEF_Enable_VideoCapture
         VideoCapture* video_capture = dynamic_cast<VideoCapture*>(capture);
         if (video_capture != nullptr) {
@@ -174,15 +170,14 @@ namespace g2
         throw CaptureException(0, "The Capture didn't compile with WindowHandle Inference.", __FUNCTION__, __FILE__, __LINE__);
 #endif
     }
-    
     void UseDirectShowCapture(Capture *capture) {
 #ifdef DEF_Enable_DirectShowCapture
-        capture->UseDirectShowCapture();
+        //TODO: check capture type
+        //capture->UseDirectShowCapture();
 #else
         throw CaptureException(0, "The Capture didn't compile with DirectShow Inference.", __FUNCTION__, __FILE__, __LINE__);
 #endif
     }
-    
     void UseVideoCapture(Capture *capture) {
 #ifdef DEF_Enable_VideoCapture
         //TODO: check if the capture is VideoCapture
@@ -191,7 +186,6 @@ namespace g2
         throw CaptureException(0, "The Capture didn't compile with VideoCapture Inference.", __FUNCTION__, __FILE__, __LINE__);
 #endif
     }
-    
     void UseVideoCapture2(Capture *capture) {
 #ifdef DEF_Enable_VideoCapture2
         capture->UseVideoCapture2();
@@ -199,7 +193,6 @@ namespace g2
         throw CaptureException(0, "The Capture didn't compile with VideoCapture2 Inference.", __FUNCTION__, __FILE__, __LINE__);
 #endif
     }
-    
     void UseVideoCapture3(Capture *capture) {
 #ifdef DEF_Enable_VideoCapture3
         capture->UseVideoCapture3();
@@ -208,8 +201,7 @@ namespace g2
                                __LINE__);
 #endif
     }
-    
-    
+
     cv::Mat* CaptureImage(Capture *capture){
         auto *image= new cv::Mat();
         *image = capture->get();
@@ -220,4 +212,77 @@ namespace g2
         delete image;
         image = nullptr;
     }
+#ifdef __cplusplus
+    CaptureManager::CaptureManager(CaptureType mode):mode(mode) {
+        try{
+            capture = CreateCapture(this->mode);
+        }
+        catch (CaptureException &e){
+            throw e;
+        }
+        catch (std::exception &e){
+            throw CaptureException(0, e.what(), __FUNCTION__, __FILE__, __LINE__);
+        }
+        catch (...){
+            throw CaptureException(0, "Unknown Error", __FUNCTION__, __FILE__, __LINE__);
+        }
+    }
+    CaptureManager::CaptureManager(CaptureType mode, const CaptureOptions &options):mode(mode),options(options) {
+        capture = CreateCapture(this->mode);
+        set(this->options);
+        if (capture->initialize())
+        {
+        
+        }
+        else
+        {
+            throw CaptureException(0, "Capture initialize failed", __FUNCTION__, __FILE__, __LINE__);
+        }
+    }
+    
+    CaptureManager::~CaptureManager() {
+        DestroyCapture(capture);
+    }
+    
+    void CaptureManager::set(const CaptureOptions &options) {
+        switch (mode) {
+            case CaptureType::WindowHandle:
+                SetWindowHandle(capture, options);
+                break;
+            case CaptureType::DirectShow:
+                SetDirectHandle(capture, options);
+                break;
+            case CaptureType::Video:
+                SetVideoPath(capture, options);
+                break;
+            case CaptureType::Video2:
+                SetVideoPath(capture, options);
+                break;
+            case CaptureType::Video3:
+                SetVideoPath(capture, options);
+                break;
+            default:
+                break;
+        }
+    }
+    
+    void CaptureManager::reinitialize(CaptureType mode) {
+        this->mode = mode;
+        DestroyCapture(capture);
+        capture = CreateCapture(mode);
+    }
+    
+    cv::Mat CaptureManager::get() {
+        return capture->get();
+    }
+    
+    err CaptureManager::get_last_error() {
+        err e;
+        e.code = capture->error.code;
+        e.message = capture->error.message.c_str();
+        
+        return e;
+    }
+
+#endif
 }

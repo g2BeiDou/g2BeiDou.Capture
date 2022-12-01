@@ -4,60 +4,79 @@ project(g2BeiDou_Capture VERSION 0.1.0 LANGUAGES CXX)
 #=============================================
 # 设置是否编译动态库
 #=============================================
-option(编译动态库 "BUILD_SHARED_LIBS" ON)
+option(Set_Build_Shared_libs "编译动态库" ON)
+if(Set_Build_Shared_libs)
+    set(BUILD_SHARED_LIBS ON)
+else()
+    set(BUILD_SHARED_LIBS OFF)
+endif()
 #=============================================
 # 设置是否静态链接opencv
 #=============================================
-option(静态链接opencv "STATIC_LINK_OPENCV" ON)
+option(Set_Static_Link_Opencv "静态链接opencv" ON)
+if(Set_Static_Link_Opencv)
+    set(STATIC_LINK_OPENCV ON)
+else()
+    set(STATIC_LINK_OPENCV OFF)
+endif()
 #=============================================
 # 设置opencv路径
 #=============================================
 option(库opencv路径 "LIBRARY_OPENCV_DIR")
-set(库opencv路径 "D:/opencv/opencv-4.5.3/build/x64/vc16/lib")
+set(LIBRARY_OPENCV_DIR "D:/opencv/opencv-4.5.3/build/x64/vc16/lib")
 
 #=============================================
 # 设置是否生成文档
 #=============================================
 option(生成文档 "BUILD_DOCUMENTATION" OFF)
-
+set(BUILD_DOCUMENTATION)
+#=============================================
+# 设置是否启用编译Cpp接口
+#=============================================
+option(启用编译Cpp接口 "BUILD_CPP_INTERFACE" OFF)
+set(BUILD_CPP_INTERFACE)
+# 启用宏 Def_Build_CPP_INTERFACE
+if(启用编译Cpp接口)
+    add_compile_definitions(Def_Build_CPP_INTERFACE)
+endif()
 #=============================================
 # 设置是否启用 Enable_WindowHandle
 #=============================================
-option(启用WindowHandle "Enable_WindowHandle" ON)
+option(Enable_WindowHandle "启用WindowHandle" ON)
 # 启用宏 Def_Enable_WindowHandle
-if(启用WindowHandle)
+if(Enable_WindowHandle)
     add_compile_definitions(Def_Enable_WindowHandle)
 endif()
 #=============================================
 # 设置是否启用 Enable_DirectShow
 #=============================================
-option(启用DirectShow "Enable_DirectShow" OFF)
+option(Enable_DirectShow "启用DirectShow" ON)
 # 启用宏 Def_Enable_DirectShow
-if(启用DirectShow)
+if(Enable_DirectShow)
     add_compile_definitions(Def_Enable_DirectShow)
 endif()
 #=============================================
 # 设置是否启用 Enable_Video
 #=============================================
-option(启用Video "Enable_Video" ON)
+option(Enable_Video "启用Video" ON)
 # 启用宏 Def_Enable_Video
-if(启用Video)
+if(Enable_Video)
     add_compile_definitions(Def_Enable_Video)
 endif()
 #=============================================
 # 设置是否启用 Enable_Video
 #=============================================
-option(启用Video2 "Enable_Video2" OFF)
+option(Enable_Video2 "启用Video2" OFF)
 # 启用宏 Def_Enable_Video2
-if(启用Video2)
+if(Enable_Video2)
     add_compile_definitions(Def_Enable_Video2)
 endif()
 #=============================================
 # 设置是否启用 Enable_Video
 #=============================================
-option(启用Video3 "Enable_Video3" OFF)
+option(Enable_Video3 "启用Video3" OFF)
 # 启用宏 Def_Enable_Video3
-if(启用Video3)
+if(Enable_Video3)
     add_compile_definitions(Def_Enable_Video3)
 endif()
 
@@ -108,4 +127,18 @@ if (生成文档)
     endif(DOXYGEN_FOUND)
 endif ()
 
-
+#=============================================
+message("\n-----------------------------")
+message("编译动态库: ${BUILD_SHARED_LIBS}")
+message("静态链接opencv: ${STATIC_LINK_OPENCV}")
+message("库opencv路径: ${LIBRARY_OPENCV_DIR}")
+message("生成文档: ${BUILD_DOCUMENTATION}")
+message("启用编译Cpp接口: ${BUILD_CPP_INTERFACE}")
+message("启用WindowHandle: ${Enable_WindowHandle}")
+message("启用DirectShow: ${Enable_DirectShow}")
+message("启用Video: ${Enable_Video}")
+message("启用Video2: ${Enable_Video2}")
+message("启用Video3: ${Enable_Video3}")
+message("打包: ${BUILD_PACKAGE}")
+message("-----------------------------\n")
+#=============================================

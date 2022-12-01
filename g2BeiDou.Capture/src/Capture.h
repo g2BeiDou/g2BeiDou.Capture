@@ -5,6 +5,7 @@
 #ifndef CAPTURE_CAPTURE_H
 #define CAPTURE_CAPTURE_H
 #include <opencv2/opencv.hpp>
+#include "../logger/grror.h"
 namespace g2
 {
     class Capture
@@ -19,6 +20,7 @@ namespace g2
     public:
         bool isInitialized = false;
         bool isBaseCapture = true;
+        grror error;
     };
 }
 

@@ -30,7 +30,9 @@ namespace g2
         BitBlt(hCaptureDC, 0, 0, width, height, hWindowDC, 0, 0, SRCCOPY | CAPTUREBLT);
         BITMAP bmp;
         GetObject(hCaptureBitmap, sizeof(BITMAP), &bmp);
-        cv::Mat mat = cv::Mat(bmp.bmHeight, bmp.bmWidth, CV_8UC4, bmp.bmBits);
+        cv::Mat mat;
+        mat.create(bmp.bmHeight, bmp.bmWidth, CV_8UC4);
+        GetBitmapBits(hCaptureBitmap, bmp.bmWidthBytes * bmp.bmHeight, mat.data);
         DeleteObject(hCaptureBitmap);
         DeleteDC(hCaptureDC);
         ReleaseDC(window_handle, hWindowDC);
