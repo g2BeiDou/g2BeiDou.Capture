@@ -1,3 +1,0 @@
-C:/Users/GengG/CLionProjects/g2BeiDou.Capture/g2BeiDou.Capture/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/GengG/CLionProjects/g2BeiDou.Capture/g2BeiDou.Capture/cmake-build-debug/CMakeFiles/g2BeiDou.Capture.dir
-C:/Users/GengG/CLionProjects/g2BeiDou.Capture/g2BeiDou.Capture/cmake-build-debug/CMakeFiles/rebuild_cache.dir
