@@ -1,7 +1,14 @@
+#ifdef USED_G2BEIDOU_STATICLIB
+#define _LIB
+#endif
+#ifndef _LIB
 #ifdef G2BEIDOU_CAPTURE_EXPORTS
 #define G2BEIDOU_CAPTURE_API __declspec(dllexport)
 #else
 #define G2BEIDOU_CAPTURE_API __declspec(dllimport)
+#endif
+#else
+#define G2BEIDOU_CAPTURE_API
 #endif
 
 #define G2API G2BEIDOU_CAPTURE_API
@@ -110,7 +117,7 @@ namespace g2
     };
 #endif
 }
-//#define DEF_Enable_WindowHandleCapture
+#define DEF_Enable_WindowHandleCapture
 #define DEF_Enable_DirectShowCapture
 //#define DEF_Enable_VideoCapture
 //#define DEF_Enable_VideoCapture2
